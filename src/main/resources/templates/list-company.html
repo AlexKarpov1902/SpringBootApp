@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+<!--    <meta http-equiv="x-ua-compatible" content="ie=edge">-->
+    <title>Insurance Companies</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+</head>
+
+<body>
+    <div><h2 style="text-align: center"><span class="badge badge-secondary">Реестр страховых компаний</span></h2></div>
+    <div class="container my-2">
+    <div class="card">
+    <div class="card-body">
+        <div th:switch="${companies}" class="container my-5">
+            <p class="my-5">
+                <a href="/" class="btn btn-primary">
+                <i class="fas fa-home ml-2">  </i></a>
+                <a href="/edit" class="btn btn-primary">
+                <i class="fas fa-user-plus ml-2"> Добавить компанию </i></a>
+                 <a href="/findCompany" class="btn btn-primary">
+                <i class="fas fa-search ml-2"> Поиск </i></a>
+
+            </p>
+             
+            <div class="col-md-10">
+                <h2 th:case="null">Нет записей !!</h2>
+                <div th:case="*">
+                    <table class="table table-bordered table-striped table-responsive-md table-hover">
+                        <thead>
+                            <tr>
+                                <th>ИНН</th>
+                                <th>ОГРН</th>
+                                <th>Полное наименование</th>
+                                <th>Адрес</th>
+                                <th>Редактировать</th>
+                                <th>Удалить</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="company : ${companies}">
+                                <td th:text="${company.inn}"></td>
+                                <td th:text="${company.ogrn}"></td>
+                                <td th:text="${company.fullname}"></td>
+                                <td th:text="${company.address}"></td>
+                                <td>
+                                    <a th:href="@{/edit/{id}(id=${company.id})}" class="btn btn-primary">
+                                        <i class="fas fa-user-edit ml-2"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a th:href="@{/delete/{id}(id=${company.id})}" class="btn btn-primary">
+                                        <i class="fas fa-user-times ml-2"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+</body>
+
+</html>

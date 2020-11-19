@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <title>Find Company</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+
+</head>
+
+<body>
+    <div class="container my-5">
+        <h3> Поиск организации по параметрам</h3>
+        <div class="card">
+            <div class="card-body">
+                <div class="col-md-10">
+                    <form action="#" th:object="${company}" method="get">
+                        <div class="row">
+                           
+                            <div class="form-group col-md-8">
+                                <label for="inn" class="col-form-label">ИНН</label> 
+                                <input type="text"  class="form-control" name ="inn"
+                                            id="inn" placeholder="Введите 10 цифр"  pattern="[0-9]{10}"/>
+                                       <a href='javascript: document.location.href = "/find/inn/"+document.getElementById("inn").value;'  
+                                              class="btn btn-primary">
+                                        <i class="fas fa-search ml-2"> Поиск </i></a>
+                            </div>
+                            
+                            <div class="form-group col-md-8">
+                                <label for="ogrn" class="col-form-label">ОГРН</label> 
+                                <input type="text" class="form-control" name="ogrn"
+                                            id="ogrn" placeholder="Введите 13 цифр"  pattern="[0-9]{13}" />
+                                <a href='javascript: document.location.href = "/find/ogrn/"+document.getElementById("ogrn").value;' 
+                                         class="btn btn-primary">
+                                       <i class="fas fa-search ml-2"> Поиск </i></a>
+                           </div>
+                           
+                            <div class="form-group col-md-8">
+                                <label for="fullname" class="col-form-label">Наименование организации</label> 
+                                <input type="text" class="form-control" name="fullname"
+                                            id="fullname" placeholder="Введите часть наименования"  maxlength="80" />
+                                <a href='javascript: document.location.href = "/company/"+document.getElementById("fullname").value;' 
+                                         class="btn btn-primary">
+                                       <i class="fas fa-search ml-2"> Поиск </i></a>
+                                            
+                            </div>
+
+    
+                        </div>
+                    </form>
+                    
+                    <div><h2 th:text="${error}" style="color:darkred"> </h2></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

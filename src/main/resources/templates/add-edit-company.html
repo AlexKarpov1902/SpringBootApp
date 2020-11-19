@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Add company</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+</head>
+
+<body>
+    <div class="container my-5">
+        <h3> Добавить организацию</h3>
+        <div class="card">
+            <div class="card-body">
+                <div class="col-md-10">
+                    <form action="#" th:action="@{/createCompany}" th:object="${company}" method="post">
+                        <div class="row">
+                            <div class="form-group col-md-8">
+                                <label for="inn" class="col-form-label">ИНН</label> 
+                                <input type="text" th:field="*{inn}" class="form-control" 
+                                            id="inn" placeholder="Введите 10 цифр" required pattern="[0-9]{10}"/>
+                            </div>
+                            <div class="form-group col-md-8">
+                                <label for="ogrn" class="col-form-label">ОГРН</label> 
+                                <input type="text" th:field="*{ogrn}" class="form-control" 
+                                            id="ogrn" placeholder="Введите 13 цифр" required pattern="[0-9]{13}" />
+                            </div>
+                            <div class="form-group col-md-8">
+                                <label for="fullname" class="col-form-label">Полное наименование</label> 
+                                <input type="text" th:field="*{fullname}" class="form-control" 
+                                            id="fullname" placeholder="Полное наименование" required maxlength="80" />
+                            </div>
+                            <div class="form-group col-md-8">
+                                <label for="address" class="col-form-label">Адрес</label> 
+                                <input type="text" th:field="*{address}" class="form-control" 
+                                            id="address" placeholder="Адрес"  maxlength="80"/>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="submit" class="btn btn-primary" value=" Сохранить ">
+                            </div>
+
+                           <input type="hidden" id="id" th:field="*{id}">
+    
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
