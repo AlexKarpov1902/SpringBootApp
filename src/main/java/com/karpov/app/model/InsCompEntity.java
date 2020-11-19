@@ -8,7 +8,7 @@ public class InsCompEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @OneToOne()
+//    @OneToOne()
     private Long id;
     
     @Column(name="inn")
